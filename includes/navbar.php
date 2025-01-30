@@ -174,22 +174,26 @@ if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
                 <a href="/sports_live_site/views/buy_premium.php" class="nav-link text-light">Learn More</a>
             </div>
 
-            <h2>Reset Password</h2>
-            <form id="reset-password-form">
-                <div class="mb-3">
-                    <label for="current-password" class="form-label">Current Password</label>
-                    <input type="password" class="form-control" id="current-password" name="current_password" required>
-                </div>
-                <div class="mb-3">
-                    <label for="new-password" class="form-label">New Password</label>
-                    <input type="password" class="form-control" id="new-password" name="new_password" required>
-                </div>
-                <div class="mb-3">
-                    <label for="confirm-password" class="form-label">Confirm New Password</label>
-                    <input type="password" class="form-control" id="confirm-password" name="confirm_password" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Reset Password</button>
-            </form>
+            <h2 id="reset-password-header" style="cursor: pointer;">Reset Password</h2> 
+
+            <div id="reset-password-box" style="display: none;">
+                <form id="reset-password-form">
+                    <div class="mb-3">
+                        <label for="current-password" class="form-label">Current Password</label>
+                        <input type="password" class="form-control" id="current-password" name="current_password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="new-password" class="form-label">New Password</label>
+                        <input type="password" class="form-control" id="new-password" name="new_password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirm-password" class="form-label">Confirm New Password</label>
+                        <input type="password" class="form-control" id="confirm-password" name="confirm_password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Reset Password</button>  <button id="close-reset" class="btn btn-danger" style="margin-top: 10px;">X</button>
+
+                </form>
+            </div>
         </div>
 
             <div class="modal-footer">
@@ -539,6 +543,22 @@ if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
     });
 </script>
 
+
+<script>
+    const header = document.getElementById('reset-password-header');
+    const box = document.getElementById('reset-password-box');
+    const closeButton = document.getElementById('close-reset');
+
+    // Toggle the form visibility when clicking the header
+    header.addEventListener('click', () => {
+        box.style.display = box.style.display === 'none' ? 'block' : 'none';
+    });
+
+    // Hide the form when clicking the "X" button
+    closeButton.addEventListener('click', () => {
+        box.style.display = 'none';
+    });
+</script>
 
 
 
